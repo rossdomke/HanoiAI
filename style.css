@@ -1,0 +1,74 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.tower{
+	width: 33%;
+	height: 350px;
+	line-height: 500px;
+	display: inline-block;
+	background: red;
+	position: relative;
+}
+.block{
+	height: 35px;
+}
+.block>div{background: black; height: 100%; margin: auto;}
+.block:nth-child(even)>div{
+	background: grey;
+}
+.blockContainer{
+	position: absolute;
+	bottom: 0;
+	left:0;
+	width: 100%;
+}
+.block.b1>div{ width: 10%;}
+.block.b2>div{ width: 20%;}
+.block.b3>div{ width: 30%;}
+.block.b4>div{ width: 40%;}
+.block.b5>div{ width: 50%;}
+.block.b6>div{ width: 60%;}
+.block.b7>div{ width: 70%;}
+.block.b8>div{ width: 80%;}
+.block.b9>div{ width: 90%;}
+.block.b10>div{ width: 100%;}
