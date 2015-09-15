@@ -53,9 +53,7 @@ table {
 	height: 35px;
 }
 .block>div{background: black; height: 100%; margin: auto;}
-.block:nth-child(even)>div{
-	background: grey;
-}
+
 .blockContainer{
 	position: absolute;
 	bottom: 0;
@@ -72,3 +70,9 @@ table {
 .block.b8>div{ width: 80%;}
 .block.b9>div{ width: 90%;}
 .block.b10>div{ width: 100%;}
+
+.b1>div,.b3>div,.b5>div,.b7>div,.b9>div{
+	background: grey;
+}
+
+.navButton{width: 33%; display: inline-block;}
