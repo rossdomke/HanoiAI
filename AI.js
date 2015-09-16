@@ -26,6 +26,8 @@ function search(type){
 		$('#time').html(end - start);
 		$('#status').html('finished');
 		playSolution();
+		countNodes(game);
+		countLevels(game);
 	}, 50);
 }
 
@@ -224,12 +226,24 @@ function findSolution(node){
 function replaySolution(replayArray){
 	drawGame(replayArray.pop());
 	if(replayArray.length > 0){
+		$('#playback').html(replayArray.length);
 		setTimeout(function(){replaySolution(replayArray);}, 150);
 	}
 }
 
 function countNodes(node){
-
+	var nodeCount = 1;
+	var nodesToCount = [node];
+	while(nodesToCount.length > 0){
+		tmpNode = nodesToCount.pop();
+		if(tmpNode.children != null){
+		 	for(var i = 0; i < tmpNode.children.length; i++){
+		 		nodeCount++;
+		 		nodesToCount.push(tmpNode.children[i]);
+		 	}
+		}
+	}
+	$('#nodes').html(nodeCount);
 }
 
 function countLevels(node){
