@@ -39,11 +39,27 @@
 				<button onclick="moveDisk(game, 't3', 't2')">To t2</button>
 				<button onclick="moveDisk(game, 't3', 't3')">To t3</button>
 		</div>	 -->
-		<button onclick="newGame()">Create New Game</button>
+		<div>
+			<label>Number of disks (can go up to 10 [recursive depth search fails on 10])</label>
+			<input type="number" id="disks" value='5'/>
+		</div>
 		<button onclick="search('depth')">Depth First Search</button>
+	
 		<button onclick="search('NonRecDepth')">Non Recursive Depth First Search</button>
-		<button onclick="search('breadth')">Breadth First Search</button>
-		<button onclick="replaySolution()">Replay Solution</button>
-		<input type="number" id="disks"/>
+		<button onclick="search('breadth')">Breadth First Search</button><br/><br/>
+		<button onclick="playSolution()">Replay Solution Slowly</button>
+		<button onclick="drawTree()">Show Tree (stick to around 3 or 4 disks for a somewhat readable table)</button>
+		<div id="statsContainer">
+			<div>Mode: <span id="mode">NA</span></div>
+			<div>Disks: <span id="disksStat">5</span></div>
+			<div>Status: <span id="status">Waiting</span></div>
+			<div>Time: <span id="time">0</span>ms</div>
+			<div>Total nodes: <span id="nodes">0</span></div>
+			<div>Total Levels: <span id="levels"></span></div>
+			<div>Moves in solution: <span id="solution"></span></div>
+		</div>	
+		<div id="treeContainer">
+			
+		</div>
 	</body>	
 </html>

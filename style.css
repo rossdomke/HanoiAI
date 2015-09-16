@@ -74,5 +74,30 @@ table {
 .b1>div,.b3>div,.b5>div,.b7>div,.b9>div{
 	background: grey;
 }
-
-.navButton{width: 33%; display: inline-block;}
+#treeContainer{
+	width: 100%;
+	float: left;
+	display: table;
+	border: solid black 1px;
+	table-layout: fixed;
+}
+.node{
+	min-height: 10px;
+	margin:2px;
+	display: table-cell;
+	text-align: center;
+}
+.children{
+	width: 100%;
+	display: table;
+	border: solid black 1px;
+	border-left: 0px;
+	border-bottom: 0px;
+	table-layout: fixed;
+}
+.node.true{
+	background: green;
+}
+.nodeTitle{
+	border-right: solid black 1px;
+}
