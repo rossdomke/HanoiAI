@@ -24,7 +24,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="navButton">			
+<!-- 		<div class="navButton">			
 				<button onclick="moveDisk(game, 't1', 't1')">To t1</button>
 				<button onclick="moveDisk(game, 't1', 't2')">To t2</button>
 				<button onclick="moveDisk(game, 't1', 't3')">To t3</button>
@@ -38,6 +38,12 @@
 				<button onclick="moveDisk(game, 't3', 't1')">To t1</button>
 				<button onclick="moveDisk(game, 't3', 't2')">To t2</button>
 				<button onclick="moveDisk(game, 't3', 't3')">To t3</button>
-		</div>	
+		</div>	 -->
+		<button onclick="newGame()">Create New Game</button>
+		<button onclick="search('depth')">Depth First Search</button>
+		<button onclick="search('NonRecDepth')">Non Recursive Depth First Search</button>
+		<button onclick="search('breadth')">Breadth First Search</button>
+		<button onclick="replaySolution()">Replay Solution</button>
+		<input type="number" id="disks"/>
 	</body>	
 </html>

@@ -2,22 +2,69 @@ $(function(){
 	game = {children : null, disks : 5, t1: 0, t2: 0, t3: 0, lastMovedTo : null, startingTower: null }	
 	initializeGame(game);
 });
+function search(type){
+	var start = +new Date();
+	type = type || "depth";
+	switch(type){
+		case "depth":
+			depthFirstSearch(game);
+			break;
+		case "breadth":
+			breadthFirstSearch(game);
+			break;
+		case "NonRecDepth":
+			nonRecursiveDepthFirstSearch(game);
+			break;
+	}
+	var end = +new Date();
+	console.log(end - start);
+}
 
 
-function depthFirstSearch(node){
-	//test node
-		//if passed return true
-	//else
-		//get children
-		//if no children
-			//return false
-		//foreach child
-			//if depthfirstsearch
-				//return true
-			//else
-				//delete child node
-	drawGame(node);
+
+
+function breadthFirstSearch(node){
+	var nodesToTest = [node];
+	while(true){
+		var tmpNode = nodesToTest.shift();
+		drawGame(tmpNode);
+		if(testSolution(tmpNode)){
+			return true;
+		}else{
+			findChildren(tmpNode);
+			if(tmpNode.children != null){
+				for(var i = 0; i < tmpNode.children.length; i++){
+					nodesToTest.push(tmpNode.children[i]);
+				}
+			}
+		}
+	}
+}
+
+function nonRecursiveDepthFirstSearch(node, level, limit){
+	var nodesToTest = [node];
+	while(true){
+		var tmpNode = nodesToTest.pop();
+		drawGame(tmpNode);
+		if(testSolution(tmpNode)){
+			return true;
+		}else{
+			findChildren(tmpNode);
+			if(tmpNode.children != null){
+				for(var i = 0; i < tmpNode.children.length; i++){
+					nodesToTest.push(tmpNode.children[i]);
+				}
+			}
+		}
+	}
+}
+
+function depthFirstSearch(node, level, limit){
+	level = level || 0;
+	level++;
+
 	if(testSolution(node)){
+		drawGame(node);
 		return true;
 	}else{
 		findChildren(node);
@@ -33,7 +80,13 @@ function depthFirstSearch(node){
 			}
 		}
 	}
+}
 
+
+
+function newGame(){
+	game = {children : null, disks : $('#disks').val() , t1: 0, t2: 0, t3: 0, lastMovedTo : null, startingTower: null };
+	initializeGame(game);
 }
 function initializeGame(node){
 	var towerDisks = 0;
@@ -92,21 +145,20 @@ function moveDisk(node, towerFrom, towerTo){
 	diskToMove = findTopDisk(node[towerFrom], node.disks);
 	topDiskOnTarget = findTopDisk(node[towerTo], node.disks);
 	if(diskToMove == 0){
-		console.error("cannot move disk 0");
+		// console.error("cannot move disk 0");
 		return false;
 	}
 	if(diskToMove > topDiskOnTarget && topDiskOnTarget != 0){
-		console.error("cannot move larger disk onto smaller disk");
+		// console.error("cannot move larger disk onto smaller disk");
 		return false;
 	}
 	if(towerFrom == towerTo){
-		console.error("cannot move to same tower");
+		// console.error("cannot move to same tower");
 		return false;
 	}
 	node[towerFrom] = node[towerFrom] - (1 << (diskToMove - 1));
 	node[towerTo] = node[towerTo] + (1 << (diskToMove - 1));
 	node.lastMovedTo = towerTo;
-	drawGame(node);
 	return true;
 }
 
