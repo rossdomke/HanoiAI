@@ -10,10 +10,10 @@ function search(type){
 			depthFirstSearch(game);
 			break;
 		case "breadth":
-			breadthFirstSearch(game);
+			AISearch(game, false);
 			break;
 		case "NonRecDepth":
-			nonRecursiveDepthFirstSearch(game);
+			AISearch(game, true);
 			break;
 	}
 	var end = +new Date();
@@ -21,32 +21,13 @@ function search(type){
 }
 
 
-
-
-function breadthFirstSearch(node){
+function AISearch(node, isDepth){
 	var nodesToTest = [node];
 	while(true){
-		var tmpNode = nodesToTest.shift();
+		var tmpNode = (isDepth) ? nodesToTest.shift() : nodesToTest.pop();
 		drawGame(tmpNode);
 		if(testSolution(tmpNode)){
-			return true;
-		}else{
-			findChildren(tmpNode);
-			if(tmpNode.children != null){
-				for(var i = 0; i < tmpNode.children.length; i++){
-					nodesToTest.push(tmpNode.children[i]);
-				}
-			}
-		}
-	}
-}
-
-function nonRecursiveDepthFirstSearch(node, level, limit){
-	var nodesToTest = [node];
-	while(true){
-		var tmpNode = nodesToTest.pop();
-		drawGame(tmpNode);
-		if(testSolution(tmpNode)){
+			tmpNode.Solution = true;
 			return true;
 		}else{
 			findChildren(tmpNode);
