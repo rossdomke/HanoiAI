@@ -46,7 +46,7 @@ table {
 	height: 350px;
 	line-height: 500px;
 	display: inline-block;
-	background: red;
+	background: #ffcccc;
 	position: relative;
 }
 .block{
