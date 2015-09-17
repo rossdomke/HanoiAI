@@ -225,8 +225,8 @@ function findSolution(node){
 }
 function replaySolution(replayArray){
 	drawGame(replayArray.pop());
+	$('#playback').html(replayArray.length);
 	if(replayArray.length > 0){
-		$('#playback').html(replayArray.length);
 		setTimeout(function(){replaySolution(replayArray);}, 150);
 	}
 }
